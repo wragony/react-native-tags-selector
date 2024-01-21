@@ -1,6 +1,6 @@
 {
   "name": "react-native-tags-selector",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A ReactNative tag selector that supports single-line sliding, multi-line display, and single-select and multi-select.",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -37,18 +37,20 @@
   "keywords": [
     "react-native",
     "ios",
-    "android"
+    "android",
+    "tag",
+    "selector"
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wragony/react-native-tags-selector.git.git"
+    "url": "git+https://github.com/wragony/react-native-tags-selector.git"
   },
   "author": "wragony <wragony.1988@gmail.com> (https://github.com/wragony)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/wragony/react-native-tags-selector.git/issues"
+    "url": "https://github.com/wragony/react-native-tags-selector/issues"
   },
-  "homepage": "https://github.com/wragony/react-native-tags-selector.git#readme",
+  "homepage": "https://github.com/wragony/react-native-tags-selector#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
@@ -58,6 +60,7 @@
     "@react-native/eslint-config": "^0.72.2",
     "@release-it/conventional-changelog": "^5.0.0",
     "@types/jest": "^28.1.2",
+    "@types/lodash": "^4.14.202",
     "@types/react": "~17.0.21",
     "@types/react-native": "0.70.0",
     "commitlint": "^17.0.2",
@@ -161,5 +164,8 @@
         }
       ]
     ]
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
   }
 }

@@ -2,7 +2,12 @@
   "compilerOptions": {
     "rootDir": ".",
     "paths": {
-      "react-native-tags-selector": ["./src/index"]
+      "@src/*": [
+        "./src/*"
+      ],
+      "@img/*": [
+        "./assets/image/*"
+      ],
     },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,

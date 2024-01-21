@@ -7,15 +7,20 @@ A ReactNative tag selector that supports single-line sliding, multi-line display
 ```sh
 npm install react-native-tags-selector
 ```
+or
+
+```sh
+yarn add react-native-tags-selector
+```
 
 ## Usage
 
 ```js
-import { TagsSelectorView } from "react-native-tags-selector";
+import { multiply } from 'react-native-tags-selector';
 
 // ...
 
-<TagsSelectorView color="tomato" />
+const result = await multiply(3, 7);
 ```
 
 ## Contributing
