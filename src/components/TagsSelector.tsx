@@ -90,6 +90,7 @@ const TagsSelector = (props: TagsSelectorProps) => {
           showsHorizontalScrollIndicator={false}
           keyExtractor={(item) => `${item.id}-${item.name}`}
           style={{ marginHorizontal: 11, marginVertical: 4 }}
+          onScrollToIndexFailed={()=>{}}
           renderItem={(item) => {
             const dataItem = item.item;
             const isSelected = dataItem.id === selectId;
