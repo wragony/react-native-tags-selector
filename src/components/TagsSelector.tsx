@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import {
   FlatList,
-  Image, type ImageSourcePropType,
+  Image, type ImageSourcePropType, type ImageStyle,
   StyleSheet,
   Text, type TextStyle,
   TouchableOpacity,
@@ -17,6 +17,7 @@ export type TagsSelectorProps = {
   multiLine: boolean;
   dataSource: DataModel[];
   onChecked: (item: DataModel, index: number) => void;
+  iconStyle?: ImageStyle
   textStyle?: TextStyle
   chipStyle?: ViewStyle
   showMoreIcon?: ImageSourcePropType
@@ -34,6 +35,7 @@ const ChipItemView = (props: {
   selected: boolean;
   firstEnd: boolean;
   item: DataModel;
+  iconStyle?: ImageStyle
   textStyle?: ViewStyle,
   chipStyle?: ViewStyle,
   selectedTextColor?: string
@@ -56,7 +58,7 @@ const ChipItemView = (props: {
     <Image
       source={props.item.image}
       resizeMode={'contain'}
-      style={{ width: 22, height: 22 }}
+      style={[{ width: 22, height: 22 }, props.iconStyle]}
     />
     <Text
       style={[styles.text, props.textStyle, { color: props.selected ? props.selectedTextColor : props.unselectedTextColor }]}>{props.item.name}</Text>
@@ -74,6 +76,8 @@ const TagsSelector = (props: TagsSelectorProps) => {
     showMoreIcon,
     showLessIcon,
     showMoreStyle,
+    unselectedTextColor,
+    selectedTextColor,
     unselectedBorder,
     selectedBorder,
     selectedBackgroundColor,
@@ -113,6 +117,8 @@ const TagsSelector = (props: TagsSelectorProps) => {
                 item={item}
                 textStyle={textStyle}
                 chipStyle={chipStyle}
+                unselectedTextColor={unselectedTextColor}
+                selectedTextColor={selectedTextColor}
                 selectedBorder={selectedBorder}
                 unselectedBorder={unselectedBorder}
                 selectedBackgroundColor={selectedBackgroundColor}
@@ -154,6 +160,8 @@ const TagsSelector = (props: TagsSelectorProps) => {
                   item={dataItem}
                   textStyle={textStyle}
                   chipStyle={chipStyle}
+                  unselectedTextColor={unselectedTextColor}
+                  selectedTextColor={selectedTextColor}
                   selectedBorder={selectedBorder}
                   unselectedBorder={unselectedBorder}
                   selectedBackgroundColor={selectedBackgroundColor}

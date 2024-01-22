@@ -1,6 +1,6 @@
 {
   "name": "react-native-tags-selector",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "A ReactNative tag selector that supports single-line sliding, multi-line display, and single-select.",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
