@@ -1,14 +1,6 @@
 {
   "compilerOptions": {
     "rootDir": ".",
-    "paths": {
-      "@src/*": [
-        "./src/*"
-      ],
-      "@img/*": [
-        "./assets/image/*"
-      ],
-    },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
     "esModuleInterop": true,

@@ -1,25 +1,4 @@
-const plugins = [
-  [
-    'module-resolver',
-    {
-      root: ['./src'],
-      extensions: [
-        '.ios.js',
-        '.android.js',
-        '.js',
-        'jsx',
-        '.ts',
-        '.tsx',
-        '.json',
-      ],
-      alias: {
-        '@src': './src',
-        '@img': './assets/image',
-      },
-    },
-  ],
-  [{ globals: ['__scanCodes'], relativeSourceLocation: true }],
-];
+const plugins = [];
 
 module.exports = {
   presets: ['module:@react-native/babel-preset'],

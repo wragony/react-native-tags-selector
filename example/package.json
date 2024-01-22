@@ -11,7 +11,8 @@
   },
   "dependencies": {
     "react": "18.2.0",
-    "react-native": "0.73.2"
+    "react-native": "0.73.2",
+    "react-native-tags-selector": "git+https://github.com/wragony/react-native-tags-selector.git"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

@@ -8,9 +8,9 @@ import {
   View,
 } from 'react-native';
 import _ from 'lodash';
-import ChipsList from '@src/components/ChipsList';
-import type { DataModel } from '@src/components/types';
-import { Images, Colors } from '@src/components/resources';
+import ChipsList from '../components/ChipsList';
+import type { DataModel } from '../components/types';
+import { Images, Colors } from '../components/resources';
 
 export type TagsSelectorProps = {
   selectedId: string;

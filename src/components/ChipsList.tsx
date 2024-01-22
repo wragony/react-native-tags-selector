@@ -5,8 +5,8 @@ import {
   View,
   type ViewStyle,
 } from 'react-native';
-import Chip from '@src/components/Chips';
-import type { DataModel } from '@src/components/types';
+import Chip from '../components/Chips';
+import type { DataModel } from './types';
 
 interface ChipsListProps {
   selectId: string;

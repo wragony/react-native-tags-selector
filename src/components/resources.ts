@@ -17,6 +17,6 @@ export const Colors = {
 };
 
 export const Images = {
-  showMore: require('@img/show_more.png'),
-  showLess: require('@img/show_less.png'),
+  showMore: require('../../assets/image/show_more.png'),
+  showLess: require('../../assets/image/show_less.png'),
 };
