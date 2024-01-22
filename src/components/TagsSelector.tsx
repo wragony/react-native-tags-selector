@@ -3,7 +3,7 @@ import {
   FlatList,
   Image, type ImageSourcePropType,
   StyleSheet,
-  Text,
+  Text, type TextStyle,
   TouchableOpacity,
   View, type ViewStyle,
 } from 'react-native';
@@ -17,25 +17,34 @@ export type TagsSelectorProps = {
   multiLine: boolean;
   dataSource: DataModel[];
   onChecked: (item: DataModel, index: number) => void;
+  textStyle?: TextStyle
   chipStyle?: ViewStyle
   showMoreIcon?: ImageSourcePropType
   showLessIcon?: ImageSourcePropType
   showMoreStyle?: ViewStyle
+  unselectedBorder?: string
+  selectedBorder?: string
+  selectedBackgroundColor?: string
+  unselectedBackgroundColor?: string
 };
 
 const ChipItemView = (props: {
   selected: boolean;
   firstEnd: boolean;
   item: DataModel;
+  textStyle?: ViewStyle,
   chipStyle?: ViewStyle,
+  unselectedBorder?: string
+  selectedBorder?: string
+  selectedBackgroundColor?: string
+  unselectedBackgroundColor?: string
 }) => (
   <View
     style={[
       styles.chip,
       {
-        borderColor: props.selected ? Colors.selected : Colors.deep50,
-        backgroundColor: props.selected ? Colors.deepFF : Colors.deep25,
-        marginHorizontal: 5,
+        borderColor: props.selected ?  props.selectedBorder || Colors.selected :  props.unselectedBorder || Colors.deep50,
+        backgroundColor: props.selected ?  props.selectedBackgroundColor || Colors.deepFF :  props.unselectedBackgroundColor || Colors.deep25,
       },
       props.chipStyle,
     ]}
@@ -45,7 +54,7 @@ const ChipItemView = (props: {
       resizeMode={'contain'}
       style={{ width: 22, height: 22 }}
     />
-    <Text style={styles.text}>{props.item.name}</Text>
+    <Text style={[styles.text, props.textStyle]}>{props.item.name}</Text>
   </View>
 );
 
@@ -55,10 +64,15 @@ const TagsSelector = (props: TagsSelectorProps) => {
     multiLine = true,
     dataSource,
     onChecked,
+    textStyle,
     chipStyle,
     showMoreIcon,
     showLessIcon,
     showMoreStyle,
+    unselectedBorder,
+    selectedBorder,
+    selectedBackgroundColor,
+    unselectedBackgroundColor,
   } = props;
   const [selectId, setSelectId] = useState<string>(selectedId);
   const [showMore, setShowMore] = useState<boolean>(multiLine);
@@ -92,7 +106,12 @@ const TagsSelector = (props: TagsSelectorProps) => {
                 selected={isSelected}
                 firstEnd={isFirstEnd}
                 item={item}
+                textStyle={textStyle}
                 chipStyle={chipStyle}
+                selectedBorder={selectedBorder}
+                unselectedBorder={unselectedBorder}
+                selectedBackgroundColor={selectedBackgroundColor}
+                unselectedBackgroundColor={unselectedBackgroundColor}
               />
             );
           }}
@@ -128,7 +147,12 @@ const TagsSelector = (props: TagsSelectorProps) => {
                   selected={isSelected}
                   firstEnd={isFirstEnd}
                   item={dataItem}
+                  textStyle={textStyle}
                   chipStyle={chipStyle}
+                  selectedBorder={selectedBorder}
+                  unselectedBorder={unselectedBorder}
+                  selectedBackgroundColor={selectedBackgroundColor}
+                  unselectedBackgroundColor={unselectedBackgroundColor}
                 />
               </TouchableOpacity>
             );
@@ -158,6 +182,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 20,
     padding: 6,
+    marginHorizontal: 5,
   },
   moreLess: {
     flexDirection: 'row',
