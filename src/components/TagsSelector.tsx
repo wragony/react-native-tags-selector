@@ -22,8 +22,10 @@ export type TagsSelectorProps = {
   showMoreIcon?: ImageSourcePropType
   showLessIcon?: ImageSourcePropType
   showMoreStyle?: ViewStyle
-  unselectedBorder?: string
+  selectedTextColor?: string
+  unselectedTextColor?: string
   selectedBorder?: string
+  unselectedBorder?: string
   selectedBackgroundColor?: string
   unselectedBackgroundColor?: string
 };
@@ -34,6 +36,8 @@ const ChipItemView = (props: {
   item: DataModel;
   textStyle?: ViewStyle,
   chipStyle?: ViewStyle,
+  selectedTextColor?: string
+  unselectedTextColor?: string
   unselectedBorder?: string
   selectedBorder?: string
   selectedBackgroundColor?: string
@@ -43,8 +47,8 @@ const ChipItemView = (props: {
     style={[
       styles.chip,
       {
-        borderColor: props.selected ?  props.selectedBorder || Colors.selected :  props.unselectedBorder || Colors.deep50,
-        backgroundColor: props.selected ?  props.selectedBackgroundColor || Colors.deepFF :  props.unselectedBackgroundColor || Colors.deep25,
+        borderColor: props.selected ? props.selectedBorder || Colors.selected : props.unselectedBorder || Colors.deep50,
+        backgroundColor: props.selected ? props.selectedBackgroundColor || Colors.deepFF : props.unselectedBackgroundColor || Colors.deep25,
       },
       props.chipStyle,
     ]}
@@ -54,7 +58,8 @@ const ChipItemView = (props: {
       resizeMode={'contain'}
       style={{ width: 22, height: 22 }}
     />
-    <Text style={[styles.text, props.textStyle]}>{props.item.name}</Text>
+    <Text
+      style={[styles.text, props.textStyle, { color: props.selected ? props.selectedTextColor : props.unselectedTextColor }]}>{props.item.name}</Text>
   </View>
 );
 
