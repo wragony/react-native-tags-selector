@@ -65,7 +65,7 @@ const TagsSelector = (props: TagsSelectorProps) => {
           data={dataSource}
           selectId={selectId}
           onItemPress={(item, index) => {
-            setSelectId(item.name);
+            setSelectId(item.id);
             onChecked && onChecked(item, index);
           }}
           chipStyle={{ marginHorizontal: 0 }}
@@ -88,17 +88,17 @@ const TagsSelector = (props: TagsSelectorProps) => {
           horizontal={true}
           showsVerticalScrollIndicator={false}
           showsHorizontalScrollIndicator={false}
-          keyExtractor={(item) => item.chain_name}
+          keyExtractor={(item) => `${item.id}-${item.name}`}
           style={{ marginHorizontal: 11, marginVertical: 4 }}
           renderItem={(item) => {
             const dataItem = item.item;
-            const isSelected = dataItem.chain_name === selectId;
+            const isSelected = dataItem.id === selectId;
             const isFirstEnd =
               item.index === 0 || item.index === dataSource.length - 1;
             return (
               <TouchableOpacity
                 onPress={() => {
-                  setSelectId(dataItem.chain_name);
+                  setSelectId(dataItem.id);
                   flatListRef.current?.scrollToIndex({
                     animated: true,
                     index: item.index,
