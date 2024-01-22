@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 import {
   FlatList,
-  Image,
+  Image, type ImageSourcePropType,
   StyleSheet,
   Text,
   TouchableOpacity,
-  View,
+  View, type ViewStyle,
 } from 'react-native';
 import _ from 'lodash';
 import ChipsList from '../components/ChipsList';
@@ -17,12 +17,17 @@ export type TagsSelectorProps = {
   multiLine: boolean;
   dataSource: DataModel[];
   onChecked: (item: DataModel, index: number) => void;
+  chipStyle?: ViewStyle
+  showMoreIcon?: ImageSourcePropType
+  showLessIcon?: ImageSourcePropType
+  showMoreStyle?: ViewStyle
 };
 
 const ChipItemView = (props: {
   selected: boolean;
   firstEnd: boolean;
   item: DataModel;
+  chipStyle?: ViewStyle,
 }) => (
   <View
     style={[
@@ -32,6 +37,7 @@ const ChipItemView = (props: {
         backgroundColor: props.selected ? Colors.deepFF : Colors.deep25,
         marginHorizontal: 5,
       },
+      props.chipStyle,
     ]}
   >
     <Image
@@ -44,7 +50,16 @@ const ChipItemView = (props: {
 );
 
 const TagsSelector = (props: TagsSelectorProps) => {
-  const { selectedId, multiLine = true, dataSource, onChecked } = props;
+  const {
+    selectedId,
+    multiLine = true,
+    dataSource,
+    onChecked,
+    chipStyle,
+    showMoreIcon,
+    showLessIcon,
+    showMoreStyle,
+  } = props;
   const [selectId, setSelectId] = useState<string>(selectedId);
   const [showMore, setShowMore] = useState<boolean>(multiLine);
   const flatListRef = useRef<FlatList>(null);
@@ -77,6 +92,7 @@ const TagsSelector = (props: TagsSelectorProps) => {
                 selected={isSelected}
                 firstEnd={isFirstEnd}
                 item={item}
+                chipStyle={chipStyle}
               />
             );
           }}
@@ -90,7 +106,8 @@ const TagsSelector = (props: TagsSelectorProps) => {
           showsHorizontalScrollIndicator={false}
           keyExtractor={(item) => `${item.id}-${item.name}`}
           style={{ marginHorizontal: 11, marginVertical: 4 }}
-          onScrollToIndexFailed={()=>{}}
+          onScrollToIndexFailed={() => {
+          }}
           renderItem={(item) => {
             const dataItem = item.item;
             const isSelected = dataItem.id === selectId;
@@ -111,6 +128,7 @@ const TagsSelector = (props: TagsSelectorProps) => {
                   selected={isSelected}
                   firstEnd={isFirstEnd}
                   item={dataItem}
+                  chipStyle={chipStyle}
                 />
               </TouchableOpacity>
             );
@@ -118,7 +136,7 @@ const TagsSelector = (props: TagsSelectorProps) => {
         />
       )}
       <TouchableOpacity
-        style={styles.moreLess}
+        style={[styles.moreLess, showMoreStyle]}
         onPress={() => {
           setShowMore(!showMore);
         }}
@@ -126,7 +144,7 @@ const TagsSelector = (props: TagsSelectorProps) => {
         <Text style={styles.text}>{showMore ? 'Show more' : 'Show less'}</Text>
         <Image
           resizeMode={'contain'}
-          source={showMore ? Images.showMore : Images.showLess}
+          source={showMore ? showMoreIcon || Images.showMore : showLessIcon || Images.showLess}
         />
       </TouchableOpacity>
     </View>
