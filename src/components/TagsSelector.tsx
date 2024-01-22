@@ -35,7 +35,7 @@ const ChipItemView = (props: {
     ]}
   >
     <Image
-      source={{ uri: props.item.image || '' }}
+      source={props.item.image}
       resizeMode={'contain'}
       style={{ width: 22, height: 22 }}
     />

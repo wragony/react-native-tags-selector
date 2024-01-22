@@ -1,6 +1,6 @@
 # react-native-tags-selector
 
-A ReactNative tag selector that supports single-line sliding, multi-line display, and single-select and multi-select.
+A ReactNative tag selector that supports single-line sliding, multi-line display, and single-select.
 
 ## Installation
 
